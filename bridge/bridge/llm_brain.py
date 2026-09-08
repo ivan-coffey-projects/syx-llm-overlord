@@ -239,14 +239,14 @@ class LLMBrain:
 
     def _init_client(self):
         """Initialize the LLM client based on provider."""
-        base_url, api_key = self.config.resolve()
+        base_url, key = self.config.resolve()
 
         if self.config.provider == "anthropic":
             from anthropic import Anthropic
-            self._client = Anthropic(api_key=api_key)
+            self._client = Anthropic(api_key=key)
         else:
             from openai import OpenAI
-            kwargs = {"api_key": api_key}
+            kwargs = {"api_key": key}
             if base_url:
                 kwargs["base_url"] = base_url
             timeout = 180.0 if self.config.provider == "ollama" else 90.0

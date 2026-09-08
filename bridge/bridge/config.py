@@ -300,7 +300,7 @@ def load_config(path: str | Path = "config.yaml") -> Config:
     map_data = data.get("map", {})
     provider = llm_data.get("provider", "openai")
     model = normalize_model_id(provider, llm_data.get("model", "gpt-4o"))
-    api_key = llm_data.get("api_key") or resolve_provider_api_key(provider)
+    key = llm_data.get("api_key") or resolve_provider_api_key(provider)
 
     fallback = llm_data.get("fallback_model")
     if fallback is None and provider == "openrouter":
@@ -319,7 +319,7 @@ def load_config(path: str | Path = "config.yaml") -> Config:
         LLMConfig(
             provider=provider,
             model=model,
-            api_key=api_key,
+            api_key=key,
             base_url=llm_data.get("base_url"),
             max_tokens=llm_data.get("max_tokens", 2048),
             temperature=llm_data.get("temperature", 0.7),

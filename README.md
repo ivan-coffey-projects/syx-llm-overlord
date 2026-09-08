@@ -40,7 +40,7 @@ No API key. Runs on your machine or a LAN server.
 llm:
   provider: ollama
   model: qwen2.5:14b
-  base_url: http://localhost:11434/v1   # or http://YOUR_SERVER:11434/v1
+  base_url: http://localhost:11434/v1   # or http://host.example:8000/v1
 ```
 
 3. Dashboard → **Ollama** tab → **Wake / Load Model** if cold → **Apply**
