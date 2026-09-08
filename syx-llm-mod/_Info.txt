@@ -1,0 +1,7 @@
+VERSION: "1.0",
+GAME_VERSION_MAJOR: 69,
+GAME_VERSION_MINOR: 0,
+NAME: "LLM Overlord",
+DESC: "HTTP API for LLM observation and control on port 47823.",
+AUTHOR: "Ivan Coffey",
+INFO: "syx-llm-overlord",

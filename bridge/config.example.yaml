@@ -1,0 +1,74 @@
+# Syx LLM Overlord Configuration
+# Copy to config.yaml and fill in your settings.
+
+# ── Pick ONE provider block below ────────────────────────────────
+
+# LOCAL — Ollama (no API key, runs on your machine or LAN)
+llm:
+  provider: ollama
+  model: qwen2.5:14b
+  base_url: http://localhost:11434/v1
+  max_tokens: 2048
+  temperature: 0.7
+
+# CLOUD — OpenRouter free tier (set OPENROUTER_API_KEY in .env)
+# Dashboard lists :free models only. Pick from Settings → OpenRouter.
+# llm:
+#   provider: openrouter
+#   model: openrouter/owl-alpha
+#   fallback_model: meta-llama/llama-3.3-70b-instruct:free
+#   base_url: https://openrouter.ai/api/v1
+#   max_tokens: 2048
+#   temperature: 0.7
+
+# CLOUD — OpenAI (set OPENAI_API_KEY in .env)
+# llm:
+#   provider: openai
+#   model: gpt-4o
+#   api_key: ${OPENAI_API_KEY}
+#   max_tokens: 2048
+#   temperature: 0.7
+
+# ── Provider reference ───────────────────────────────────────────
+#
+# Anthropic: provider anthropic, pip install anthropic, ANTHROPIC_API_KEY
+# Together:  provider together, TOGETHER_API_KEY
+# Groq:      provider groq
+# DeepSeek:  provider deepseek
+# Generic:   provider api + base_url + api_key
+
+game:
+  mod_url: http://localhost:47823
+  poll_interval_seconds: 5
+  command_rate_limit: 3   # max commands per decision cycle
+
+dashboard:
+  port: 3847
+  ws_enabled: true
+
+# Persona (voice): gregg | peace_god | tyrant
+# Game mode (strategy): civil_flow | teacher
+overlord:
+  game_mode: civil_flow
+  persona: gregg
+
+# Vision — game window screenshots for map-aware decisions (requires xdotool + ImageMagick)
+# vision:
+#   enabled: true
+#   every_n_ticks: 5
+#   max_width: 1024
+#   model: google/gemini-2.0-flash-exp:free
+
+# Map — dashboard shows full settlement; LLM gets mapRows only if llm_enabled: true
+# map:
+#   llm_enabled: false
+
+# Optional path overrides (defaults: repo-root/wiki, repo-root/logs)
+# paths:
+#   wiki_dir: ../wiki
+#   memory_file: ../logs/overlord-memory.jsonl
+#   playbook: ../wiki/rules/playbook.md
+
+logging:
+  level: INFO
+  file: syx-overlord.log

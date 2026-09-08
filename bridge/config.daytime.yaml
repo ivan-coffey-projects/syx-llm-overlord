@@ -1,0 +1,26 @@
+llm:
+  provider: zenmux
+  model: deepseek-v4-pro
+  fallback_model: openai/gpt-4o-mini
+  base_url: https://zenmux.ai/api/v1
+  max_tokens: 2048
+  temperature: 0.4
+game:
+  mod_url: http://localhost:47823
+  poll_interval_seconds: 12
+  command_rate_limit: 1
+dashboard:
+  port: 3847
+  ws_enabled: true
+overlord:
+  game_mode: civil_flow
+  persona: peace_god
+  personality: peace_god
+vision:
+  enabled: true
+  every_n_ticks: 5
+  max_width: 1024
+  model: openai/gpt-4o-mini
+logging:
+  level: INFO
+  file: syx-overlord.log
